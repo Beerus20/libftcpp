@@ -6,19 +6,17 @@
 /*   By: ballain <ballain@student.42antananarivo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:00:55 by ballain           #+#    #+#             */
-/*   Updated: 2024/10/01 18:21:24 by ballain          ###   ########.fr       */
+/*   Updated: 2025/10/04 10:14:27 by ballain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftcpp.hpp"
+#include "../includes/libftcpp.hpp"
 
-using namespace std;
-
-string	ft_format(const string &text, size_t len, const int &justify)
+std::string	ft_format(const std::string &text, std::size_t len, const int &justify)
 {
 	size_t	i(0);
 	size_t	j(0);
-	string	r_value("");
+	std::string	r_value("");
 
 	while (justify && text.length() < len && j++ < len - text.length())
 		r_value += " ";

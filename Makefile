@@ -1,59 +1,34 @@
-# FILES
-FILE			= \
-					ft_format.cpp
+include mk/files.mk
 
-# OBJECTS FILE
-TEMPLATES		=
+NAME			= libftcpp
+CXXVERSION		= 17
+CXX				= c++
+CXXFLAGS		= -Wall -Wextra -Werror -std=c++$(CXXVERSION) -g
+MAKEFLAGS 		+= --no-print-directory
+ARGS			=
 
-# OBJECTS PATH
-TEMPLATES_PATH	= $(TEMPLATES:%.cpp=templates/%.cpp)
+VALGRINDFLAGS	= --quiet
+SVALGRINDFLAGS	= --leak-check=full --show-leak-kinds=all
 
-# OBJECTS
-OBJS			= $(FILE:%.cpp=output/%.o)
-TEMPLATES_OBJS	= $(TEMPLATES_PATH:templates/%.cpp=output/%.o)
+ifneq ("$(ARG)","")
+	ARGS := "$(ARG)"
+endif
 
-# INCLUDES
-INCLUDES		= -Iincludes
+all				: $(NAME)
 
-# VARIABLES
-NAME			= libftcpp.a
-CC				= g++ -g
-AR				= ar rcs
-CPPFLAGS		= -Wall -Wextra -Werror -std=c++98
+$(NAME)			: $(MAIN_OBJS)
+					@$(call create_executable, $^, $@)
 
-# MAKE FUNCTION
-define compile
-	$(CC) $(CPPFLAGS) $(INCLUDES) -c $(1) -o $(2)
-endef
+clean			:
+					@rm -rf $(MAIN_OBJS)
 
-define exe
-	$(CC) $(CPPFLAGS) $(INCLUDES) $(1) -o $(2)
-endef
+fclean			: clean
+					@rm -rf $(NAME)
 
-define create_lib
-	$(AR) $(2) $(1)
-endef
+re				: fclean all
 
-all			: $(NAME)
 
-output		:
-				@if [ ! -d output ]; then mkdir output; fi
+.PHONY			: all clean fclean re
 
-output/%.o	: %.cpp | output
-				$(call compile,$<,$@)
-
-output/%.o	: Object/%.cpp | output
-				$(call compile,$<,$@)
-
-$(NAME)		: $(OBJS) $(TEMPLATES_OBJS)
-				$(call exe,$^,$@)
-
-clean		:
-				rm -rf $(OBJ)
-
-fclean		: clean
-				rm -rf $(NAME)
-
-re			: fclean all
-
-.PHONY		: all clean fclean re
+include mk/rules.mk
+include mk/functions.mk

@@ -4,6 +4,6 @@
 # include <iostream>
 # include <string>
 
-string	ft_format(const string &text, size_t len, const int &justify);
+std::string	ft_format(const std::string &text, size_t len, const int &justify);
 
 #endif
