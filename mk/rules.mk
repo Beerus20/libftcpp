@@ -54,5 +54,5 @@ push\:%		:
 				@$(call create_commit,$(subst push:,,$@))
 				@git push
 
-lib			:
-				ar rcs $(OBJS) $(NAME).a
+lib			: $(OBJS)
+				ar rcs $(NAME).a $(OBJS)
