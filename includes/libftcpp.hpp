@@ -5,5 +5,7 @@
 # include <string>
 
 # include "../src/Log/Log.hpp"
+# include "../src/SystemTree/SystemTree.hpp"
+# include "../src/Utils/Utils.hpp"
 
 #endif
