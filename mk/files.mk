@@ -1,12 +1,24 @@
 DIRECTORIES					= \
-								functions
+								Log								\
+								SystemTree						\
+								Utils
 
-DIR_FUNCTIONS				= \
-								ft_format.cpp
+DIR_LOG						= \
+								Log.cpp							\
+								Log.filter.cpp
+
+DIR_SYSTEMTREE				= \
+								Node.accessors.cpp				\
+								Node.cpp						\
+								SystemTree.accessors.cpp		\
+								SystemTree.cpp
+
+DIR_UTILS					= \
+								Utils.cpp
 
 FILES						= \
 								$(foreach dir, $(DIRECTORIES), \
-									$(addprefix $(dir)/, $(DIR_$(shell echo $(dir) | tr a-z A-Z))) \
+									$(addprefix src/$(dir)/, $(DIR_$(shell echo $(dir) | tr a-z A-Z))) \
 								)
 
 OBJS						= \
