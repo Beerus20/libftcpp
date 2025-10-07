@@ -1,4 +1,5 @@
 #include "Utils.hpp"
+#include <string>
 
 Utils::Utils(void) {}
 Utils::Utils(const Utils &) {}
@@ -8,33 +9,29 @@ Utils	&Utils::operator=(const Utils &)
 	return (*this);
 }
 
-void	Utils::removeAll(std::string &to_change, const std::string &str, std::size_t pos)
+void	Utils::readLines(const std::string &path, void (*func)(const std::string &))
 {
-	std::size_t	len;
+	std::ifstream	file(path);
+	std::string		line("");
 
-	if (pos >= to_change.length())
-		return ;
-	pos = to_change.find(str, pos);
-	len = str.length();
-	while (pos != std::string::npos)
+	if (file.is_open() && (*func) != NULL)
 	{
-		to_change = to_change.erase((pos > 0 ? pos - 1 : pos), len);
-		pos = to_change.find(str, pos);
+		while (std::getline(file, line))
+			(*func)(line);
+		file.close();
 	}
 }
 
-void	Utils::replaceAll(std::string &to_change, const std::string &word, const std::string &replace, std::size_t pos)
+void	Utils::readLines(const std::string &path, void *result, void (*func)(const std::string &, void *))
 {
-	std::size_t	len;
+	std::ifstream	file(path);
+	std::string		line("");
 
-	if (pos >= to_change.length())
-		return ;
-	pos = to_change.find(word, pos);
-	len = word.length();
-	while (pos != std::string::npos)
+	if (file.is_open() && (*func) != NULL)
 	{
-		to_change = to_change.replace(pos, len, replace);
-		pos = to_change.find(word, pos);
+		while (std::getline(file, line))
+			(*func)(line, result);
+		file.close();
 	}
 }
 

@@ -1,8 +1,8 @@
 #ifndef __UTILS_HPP__
 # define __UTILS_HPP__
 
-# include <iostream>
-# include <sstream>
+# include "../../includes/dependencies.hpp"
+
 class Utils
 {
 	private:
@@ -13,10 +13,16 @@ class Utils
 	public:
 		virtual ~Utils(void);
 
+		static const std::vector<std::string >	keyword;
+
+		static void			readLines(const std::string &path, void (*func)(const std::string &) = NULL);
+		static void			readLines(const std::string &, void *, void (*func)(const std::string &, void *));
+		static std::string	getFileName(const std::string &path);
+
+		static std::string	trim(const std::string& s);
 		static void			removeAll(std::string &to_change, const std::string &str, std::size_t pos = 0);
 		static void			replaceAll(std::string &to_change, const std::string &word, const std::string &replace, std::size_t pos = 0);
 		
-		static std::string	getFileName(const std::string &path);
 		template <typename R, typename A>
 		static R convert(const A &value);
 };

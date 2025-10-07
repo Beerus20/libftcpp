@@ -14,6 +14,8 @@ DIR_SYSTEMTREE				= \
 								SystemTree.cpp
 
 DIR_UTILS					= \
+								Utils.strings.cpp				\
+								Utils.keyword.cpp				\
 								Utils.cpp
 
 FILES						= \
