@@ -55,4 +55,7 @@ push\:%		:
 				@git push
 
 lib			: $(OBJS)
-				ar rcs $(NAME).a $(OBJS)
+				@ar rcs $(NAME).a $(OBJS)
+
+status		:
+				@git status
