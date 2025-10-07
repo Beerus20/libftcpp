@@ -65,6 +65,6 @@ define create_commit
 			git commit -m "$$COMMIT_MESSAGE"; \
 		fi \
 	else \
-		echo "No changes to commit."; \
+		echo $(NO_COMMIT_MESSAGE); \
 	fi
 endef

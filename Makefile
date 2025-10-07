@@ -1,18 +1,5 @@
 include mk/files.mk
-
-NAME			= libftcpp
-CXXVERSION		= 17
-CXX				= c++
-CXXFLAGS		= -Wall -Wextra -Werror -std=c++$(CXXVERSION) -g
-MAKEFLAGS 		+= --no-print-directory
-ARGS			=
-
-VALGRINDFLAGS	= --quiet
-SVALGRINDFLAGS	= --leak-check=full --show-leak-kinds=all
-
-ifneq ("$(ARG)","")
-	ARGS := "$(ARG)"
-endif
+include mk/variables.mk
 
 all				: $(NAME)
 
