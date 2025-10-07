@@ -1,5 +1,4 @@
 #include "Node.hpp"
-#include <utility>
 
 Node::Node(void) : _filter(NodeFilterType::WITHOUT_HIDDEN) {}
 Node::Node(NodeFilterType filter) : _filter(filter) {}

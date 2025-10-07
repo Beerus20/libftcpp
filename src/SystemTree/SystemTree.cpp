@@ -1,9 +1,4 @@
 #include "SystemTree.hpp"
-#include <dirent.h>
-#include <cstddef>
-#include <cstdio>
-#include <string>
-#include "Node.hpp"
 
 SystemTree::SystemTree(void) {}
 SystemTree::SystemTree(const SystemTree &other) : Node(other) { *this = other; }
