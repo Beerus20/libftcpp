@@ -1,7 +1,13 @@
 DIRECTORIES					= \
+								Text							\
 								Log								\
 								SystemTree						\
 								Utils
+
+DIR_TEXT					= \
+								Text.operators.cpp				\
+								Text.accessors.cpp				\
+								Text.cpp
 
 DIR_LOG						= \
 								Log.cpp							\

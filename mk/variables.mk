@@ -14,4 +14,4 @@ ifneq ("$(ARG)","")
 endif
 
 NO_COMMIT_MESSAGE	= "No changes to commit."
-Y					= 
+Y					= ""
