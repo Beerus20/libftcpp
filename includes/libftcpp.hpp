@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+#include <algorithm>
 
 # include "../src/Log/Log.hpp"
 # include "../src/SystemTree/SystemTree.hpp"

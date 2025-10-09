@@ -2,6 +2,7 @@
 # define __UTILS_HPP__
 
 # include "../../includes/dependencies.hpp"
+#include <algorithm>
 
 class Utils
 {
@@ -25,6 +26,10 @@ class Utils
 		
 		template <typename R, typename A>
 		static R convert(const A &value);
+
+		template <typename T>
+		static typename std::vector<T>::iterator find(const std::vector<T> &vec, const T &to_find);
+
 };
 
 template <typename R, typename A>
@@ -37,6 +42,12 @@ R Utils::convert(const A &value)
 	ss >> res;
 
 	return res;
+}
+
+template <typename T>
+typename std::vector<T>::iterator Utils::find(const std::vector<T> &vec, const T &to_find)
+{
+	return (std::find(vec.begin(), vec.end(), to_find));
 }
 
 #endif

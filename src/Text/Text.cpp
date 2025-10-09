@@ -34,6 +34,11 @@ const std::string	Text::getWord(void)
 	return (word);
 }
 
+bool	Text::eof(void)
+{
+	return (this->_cursor >= this->_content.size());
+}
+
 void	Text::reset(void)
 {
 	this->_cursor = 0;

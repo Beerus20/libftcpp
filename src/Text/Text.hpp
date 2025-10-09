@@ -33,6 +33,7 @@ class Text
 
 		void				setContent(const std::string &content);
 
+		bool				eof(void);
 		void				reset(void);
 		void				clear(void);
 };
