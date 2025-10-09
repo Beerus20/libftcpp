@@ -5,7 +5,9 @@ int	main(int, char **argv)
 	Text		text(argv[1]);
 	std::string	tmp;
 
-	text.addSeparators("OL");
+	text.addSeparators("L");
+	text.setMode(Text::Mode::REVERSE);
+	text.updateCursor(10);
 	while (1)
 	{
 		text >> tmp;
@@ -16,6 +18,5 @@ int	main(int, char **argv)
 	}
 	text << "something to test here";
 	std::cout << text << std::endl;
-	//Utils::readLines(argv[1]);
 	return (0);
 }

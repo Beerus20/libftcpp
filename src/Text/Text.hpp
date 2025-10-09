@@ -8,16 +8,16 @@
 
 class Text
 {
-	private:
-		std::size_t	_cursor;
-		std::string	_content;
-		std::string	_separators;
-		std::string	_found_separators;
-
 	public:
+		enum class Mode
+		{
+			NORMAL,
+			REVERSE
+		};
+
 		Text(void);
-		Text(const std::string &content);
-		Text(const std::string &content, const std::string &separators);
+		Text(const std::string &content, Mode mode = Mode::NORMAL);
+		Text(const std::string &content, const std::string &separators, Mode mode = Mode::NORMAL);
 		Text(const Text &other);
 		virtual ~Text(void);
 		Text			&operator=(const Text &other);
@@ -25,17 +25,31 @@ class Text
 		Text			&operator<<(const std::string &str);
 
 		const std::string	getWord(void);
+		const std::string	getRWord(void);
 		const std::size_t	&getCursor(void) const;
 		const std::string	&getContent(void) const;
 		const std::string	&getSeparators(void) const;
 		const std::string	&getFoundSeparators(void) const;
+		const Mode			&getMode(void) const;
 		void				addSeparators(const std::string &sep);
 
+		void				setMode(const Mode &mode);
 		void				setContent(const std::string &content);
+		void				updateCursor(std::size_t cursor_position);
 
 		bool				eof(void);
 		void				reset(void);
 		void				clear(void);
+
+	private:
+		std::size_t	_cursor;
+		std::string	_content;
+		std::string	_separators;
+		std::string	_found_separators;
+		Mode		_mode;
+		std::size_t	_size;
+
+	
 };
 
 std::ostream	&operator<<(std::ostream &os, const Text &to_show);

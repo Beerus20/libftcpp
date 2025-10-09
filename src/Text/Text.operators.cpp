@@ -14,7 +14,10 @@ Text	&Text::operator=(const Text &other)
 
 Text	&Text::operator>>(std::string &str)
 {
-	str = this->getWord();
+	if (this->_mode == Text::Mode::NORMAL)
+		str =  this->getWord();
+	else
+		str = this->getRWord();
 	return (*this);
 }
 
