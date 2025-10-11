@@ -2,7 +2,9 @@
 # define __UTILS_HPP__
 
 # include "../../includes/dependencies.hpp"
-#include <algorithm>
+# include <algorithm>
+# include <ostream>
+# include "../../includes/Types.hpp"
 
 class Utils
 {
@@ -16,19 +18,21 @@ class Utils
 
 		static const std::vector<std::string >	keyword;
 
-		static void			readLines(const std::string &path, void (*func)(const std::string &) = NULL);
-		static void			readLines(const std::string &, void *, void (*func)(const std::string &, void *));
-		static std::string	getFileName(const std::string &path);
+		static void				readLines(const std::string &path, void (*func)(const std::string &) = NULL);
+		static void				readLines(const std::string &, void *, void (*func)(const std::string &, void *));
+		static std::string		getFileName(const std::string &path);
 
-		static std::string	trim(const std::string& s);
-		static void			removeAll(std::string &to_change, const std::string &str, std::size_t pos = 0);
-		static void			replaceAll(std::string &to_change, const std::string &word, const std::string &replace, std::size_t pos = 0);
+		static std::string		trim(const std::string& s);
+		static void				removeAll(std::string &to_change, const std::string &str, std::size_t pos = 0);
+		static void				replaceAll(std::string &to_change, const std::string &word, const std::string &replace, std::size_t pos = 0);
 		
+		static Vector::string	split(const std::string &word, const std::string &sep = "");
+
 		template <typename R, typename A>
 		static R convert(const A &value);
 
 		template <typename T>
-		static typename std::vector<T>::iterator find(const std::vector<T> &vec, const T &to_find);
+		static typename std::vector<T>::const_iterator find(const std::vector<T> &vec, const T &to_find);
 
 };
 
@@ -45,9 +49,18 @@ R Utils::convert(const A &value)
 }
 
 template <typename T>
-typename std::vector<T>::iterator Utils::find(const std::vector<T> &vec, const T &to_find)
+typename std::vector<T>::const_iterator Utils::find(const std::vector<T> &vec, const T &to_find)
 {
 	return (std::find(vec.begin(), vec.end(), to_find));
+}
+
+template <typename T>
+std::ostream	&operator<<(std::ostream &os, const Vector::_<T> &container)
+{
+	std::for_each(container.begin(), container.end(), [&os](const T &value){
+		os << value << std::endl;
+	});
+	return (os);
 }
 
 #endif

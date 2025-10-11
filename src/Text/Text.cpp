@@ -57,6 +57,16 @@ const std::string	Text::getRWord(void)
 	return (word);
 }
 
+bool	Text::hasFoundSeparator(const std::string &to_search) const
+{
+	for (std::size_t i(0); i < to_search.size(); i++)
+	{
+		if (this->_found_separators.find_first_of(to_search[i]) != std::string::npos)
+			return (true);
+	}
+	return (false);
+}
+
 bool	Text::eof(void)
 {
 	return (this->_cursor >= this->_size);
@@ -74,4 +84,17 @@ void	Text::clear(void)
 	this->_mode = Text::Mode::NORMAL;
 	this->_content.clear();
 	this->_size = 0;
+}
+
+Vector::string		Text::split(bool all)
+{
+	Vector::string	rvalue;
+	std::size_t		tmp_cursor_value(this->_cursor);
+
+	if (all)
+		this->_cursor = 0;
+	while (!this->eof())
+		rvalue.push_back(this->getWord());
+	this->_cursor = tmp_cursor_value;
+	return (rvalue);
 }

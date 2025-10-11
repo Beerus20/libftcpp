@@ -1,4 +1,5 @@
 #include "Utils.hpp"
+#include "../Text/Text.hpp"
 
 std::string	Utils::trim(const std::string& s)
 {
@@ -35,4 +36,15 @@ void	Utils::replaceAll(std::string &to_change, const std::string &word, const st
 		to_change = to_change.replace(pos, len, replace);
 		pos = to_change.find(word, pos);
 	}
+}
+
+Vector::string	Utils::split(const std::string &word, const std::string &separators)
+{
+	Vector::string	rvalue;
+	Text			text(word);
+
+	text.addSeparators(separators);
+	while (!text.eof())
+		rvalue.push_back(text.getWord());
+	return (rvalue);
 }

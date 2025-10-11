@@ -37,9 +37,13 @@ class Text
 		void				setContent(const std::string &content);
 		void				updateCursor(std::size_t cursor_position);
 
+		bool				hasFoundSeparator(const std::string &to_search) const;
+
 		bool				eof(void);
 		void				reset(void);
 		void				clear(void);
+
+		Vector::string		split(bool all = false);
 
 	private:
 		std::size_t	_cursor;

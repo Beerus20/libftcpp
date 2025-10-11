@@ -8,5 +8,6 @@
 # include <sstream>
 # include <fstream>
 # include <vector>
+# include "Types.hpp"
 
 #endif

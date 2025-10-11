@@ -21,7 +21,7 @@ namespace Vector {
 	using f = std::vector<float>;
 	using d = std::vector<double>;
 	template <typename T>
-	using _ = T;
+	using _ = std::vector<T>;
 };
 
 namespace Map {
