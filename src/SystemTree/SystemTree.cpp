@@ -38,7 +38,7 @@ bool	SystemTree::load(const std::string &path, std::size_t deep)
 }
 
 
-bool	SystemTree::load(const std::string &path, json &data, std::size_t deep)
+bool	SystemTree::load(const std::string &path, Json &data, std::size_t deep)
 {
 	const std::string	tmp_path(this->checkPath(path));
 
@@ -57,7 +57,7 @@ bool	SystemTree::load(const std::string &path, json &data, std::size_t deep)
 	return (true);
 }
 
-bool	SystemTree::loadDirectory(const std::string &path, json &data, std::size_t deep)
+bool	SystemTree::loadDirectory(const std::string &path, Json &data, std::size_t deep)
 {
 	DIR				*dir;
 	Dirent			content;
@@ -99,11 +99,11 @@ std::string	SystemTree::checkPath(const std::string &path)
 	return (tmp);
 }
 
-void	SystemTree::initJsonInfo(json &data)
+void	SystemTree::initJsonInfo(Json &data)
 {
 	const Node::permissions	&permissions(this->getPersmissions());
 
-	data = json();
+	data = Json();
 	data["path"] = this->getPath();
 	data["size"] = this->getSize();
 	data["permissions"] = {

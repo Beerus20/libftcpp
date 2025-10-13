@@ -9,7 +9,7 @@ Utils	&Utils::operator=(const Utils &)
 	return (*this);
 }
 
-void	Utils::readLines(const std::string &path, void (*func)(const std::string &))
+void	Utils::readLines(const std::string &path, void (*func)(const std::string &), bool empty_line)
 {
 	std::ifstream	file(path);
 	std::string		line("");
@@ -17,12 +17,16 @@ void	Utils::readLines(const std::string &path, void (*func)(const std::string &)
 	if (file.is_open() && (*func) != NULL)
 	{
 		while (std::getline(file, line))
+		{
+			if (line.empty() && !empty_line)
+				continue ;
 			(*func)(line);
+		}
 		file.close();
 	}
 }
 
-void	Utils::readLines(const std::string &path, void *result, void (*func)(const std::string &, void *))
+void	Utils::readLines(const std::string &path, void *result, void (*func)(const std::string &, void *), bool empty_line)
 {
 	std::ifstream	file(path);
 	std::string		line("");
@@ -30,7 +34,11 @@ void	Utils::readLines(const std::string &path, void *result, void (*func)(const 
 	if (file.is_open() && (*func) != NULL)
 	{
 		while (std::getline(file, line))
+		{
+			if (line.empty() && !empty_line)
+				continue ;
 			(*func)(line, result);
+		}
 		file.close();
 	}
 }

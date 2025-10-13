@@ -18,8 +18,8 @@ class Utils
 
 		static const std::vector<std::string >	keyword;
 
-		static void				readLines(const std::string &path, void (*func)(const std::string &) = NULL);
-		static void				readLines(const std::string &, void *, void (*func)(const std::string &, void *));
+		static void				readLines(const std::string &path, void (*func)(const std::string &) = NULL, bool empty_line = false);
+		static void				readLines(const std::string &, void *, void (*func)(const std::string &, void *), bool empty_line = false);
 		static std::string		getFileName(const std::string &path);
 
 		static std::string		trim(const std::string& s);

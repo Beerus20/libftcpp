@@ -13,7 +13,7 @@
 
 typedef struct dirent *		Dirent;
 
-using nlohmann::json;
+using Json = nlohmann::json;
 
 class SystemTree : public Node
 {
@@ -37,12 +37,12 @@ class SystemTree : public Node
 
 
 	private:
-		json			_infos;
+		Json			_infos;
 
 		std::string		checkPath(const std::string &path);
-		bool			load(const std::string &path, json &data, std::size_t deep = 1);
-		bool			loadDirectory(const std::string &path, json &data, std::size_t deep = 0);
-		void			initJsonInfo(json &data);
+		bool			load(const std::string &path, Json &data, std::size_t deep = 1);
+		bool			loadDirectory(const std::string &path, Json &data, std::size_t deep = 0);
+		void			initJsonInfo(Json &data);
 };
 
 std::ostream& operator << ( std::ostream& os, const SystemTree &httpsystemtree);
