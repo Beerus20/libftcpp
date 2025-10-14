@@ -1,4 +1,5 @@
 #include "Text.hpp"
+#include <cctype>
 #include <string>
 
 Text::Text(void) :
@@ -97,4 +98,16 @@ Vector::string		Text::split(bool all)
 		rvalue.push_back(this->getWord());
 	this->_cursor = tmp_cursor_value;
 	return (rvalue);
+}
+
+void	Text::showSeparators(bool printable) const
+{
+	std::cout << "Separators : [";
+	for (std::size_t i(0); i < this->_separators.size(); i++)
+	{
+		if (!std::isprint(this->_separators[i]) && printable)
+			continue ;
+		std::cout << this->_separators[i];
+	}
+	std::cout << "]" << std::endl;
 }

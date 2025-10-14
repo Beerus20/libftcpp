@@ -1,4 +1,5 @@
 #include "Text.hpp"
+#include <string>
 
 const std::size_t	&Text::getCursor(void) const
 {
@@ -31,6 +32,18 @@ void	Text::addSeparators(const std::string &sep)
 	{
 		if (this->_separators.find(sep[i]) == std::string::npos)
 			this->_separators += sep[i];
+	}
+}
+
+void	Text::rmSeparators(const std::string &sep)
+{
+	std::size_t	pos(std::string::npos);
+
+	for (std::size_t i(0); i < sep.size(); i++)
+	{
+		pos = this->_separators.find(sep[i]);
+		if (pos != std::string::npos)
+			this->_separators.erase(pos, 1);
 	}
 }
 

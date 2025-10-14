@@ -32,6 +32,7 @@ class Text
 		const std::string	&getFoundSeparators(void) const;
 		const Mode			&getMode(void) const;
 		void				addSeparators(const std::string &sep);
+		void				rmSeparators(const std::string &sep);
 
 		void				setMode(const Mode &mode);
 		void				setContent(const std::string &content);
@@ -42,6 +43,7 @@ class Text
 		bool				eof(void);
 		void				reset(void);
 		void				clear(void);
+		void				showSeparators(bool printable = true) const;
 
 		Vector::string		split(bool all = false);
 

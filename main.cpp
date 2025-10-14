@@ -3,10 +3,15 @@
 
 int	main(int, char **argv)
 {
-	//Text		text(argv[1]);
+	Text		text(argv[1]);
 	//std::string	tmp;
 
-	//text.addSeparators("L");
+	(void)text;
+	//text.addSeparators("LtSdFE");
+	//text.showSeparators();
+	//text.rmSeparators("tdE");
+	//text.showSeparators();
+
 	//text >> tmp;
 	//std::cout << "TEST : " << text.hasFoundSeparator("L") << std::endl;
 
