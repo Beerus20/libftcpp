@@ -59,6 +59,7 @@ class Text
 
 		Vector::string		split(bool all = false);
 		const std::string	&replace(const std::string &word, const std::string &replace_word, std::size_t nb = 0);
+		const std::string	&replaceChars(const std::string &chars, const std::string &replace_chars, std::size_t nb = 0);
 
 	private:
 		std::string	_word;

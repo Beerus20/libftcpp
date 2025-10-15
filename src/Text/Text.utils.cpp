@@ -29,3 +29,22 @@ const std::string	&Text::replace(const std::string &word, const std::string &rep
 	this->_size = this->_content.size();
 	return (this->_content);
 }
+
+const std::string	&Text::replaceChars(const std::string &chars, const std::string &replace_chars, std::size_t nb)
+{
+	std::size_t	pos(0);
+	std::size_t	nb_found(0);
+
+	for (std::size_t i(0); i < chars.size(); i++)
+	{
+		while ((pos = this->_content.find(chars[i], pos)) != std::string::npos)
+		{
+			this->_content.replace(pos, 1, 1, replace_chars[i]);
+			nb_found++;
+			if (nb != 0 && nb_found == nb)
+				break ;
+		}
+	}
+	this->_size = this->_content.size();
+	return (this->_content);
+}
