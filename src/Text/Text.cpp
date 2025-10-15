@@ -5,6 +5,7 @@
 Text::Text(void) :
 	_cursor(0),
 	_content(""),
+	_original_content(_content),
 	_separators(SEPARATORS),
 	_found_separators(""),
 	_tmp_separators(""),
@@ -15,6 +16,7 @@ Text::Text(void) :
 Text::Text(const  std::string &content, Mode mode) :
 	_cursor(0),
 	_content(Utils::trim(content)),
+	_original_content(_content),
 	_separators(SEPARATORS),
 	_found_separators(""),
 	_tmp_separators(""),
@@ -25,6 +27,7 @@ Text::Text(const  std::string &content, Mode mode) :
 Text::Text(const  std::string &content, const std::string &separators, Mode mode) :
 	_cursor(0),
 	_content(Utils::trim(content)),
+	_original_content(_content),
 	_separators(separators),
 	_found_separators(""),
 	_tmp_separators(""),
@@ -44,26 +47,24 @@ bool	Text::findSeparator(void) const
 	return (this->_separators.find(this->_content[this->_cursor]) != std::string::npos);
 }
 
-const std::string	Text::getWord(void)
+const std::string	&Text::getWord(void)
 {
-	std::string	word("");
-
+	this->_word.clear();
 	this->_found_separators.clear();
 	while (this->_cursor < this->_size && !this->findSeparator())
-		word += this->_content[this->_cursor++];
+		this->_word += this->_content[this->_cursor++];
 	while (this->_cursor < this->_size && this->findSeparator())
 	{
 		if (this->_found_separators.find(this->_content[this->_cursor]) == std::string::npos)
 			this->_found_separators += this->_content[this->_cursor];
 		this->_cursor++;
 	}
-	return (word);
+	return (this->_word);
 }
 
-const std::string	Text::getRWord(void)
+const std::string	&Text::getRWord(void)
 {
-	std::string	word("");
-
+	this->_word.clear();
 	this->_found_separators.clear();
 	while (this->_cursor != std::string::npos && this->_separators.find(this->_content[this->_cursor]) != std::string::npos)
 	{
@@ -72,8 +73,8 @@ const std::string	Text::getRWord(void)
 		this->_cursor--;
 	}
 	while (this->_cursor != std::string::npos && this->_separators.find(this->_content[this->_cursor]) == std::string::npos)
-		word = this->_content[this->_cursor--] + word;
-	return (word);
+		this->_word = this->_content[this->_cursor--] + this->_word;
+	return (this->_word);
 }
 
 bool	Text::hasFoundSeparator(const std::string &to_search) const
@@ -97,27 +98,21 @@ void	Text::reset(void)
 	this->_found_separators.clear();
 }
 
+void	Text::resetContent(void)
+{
+	this->_content = this->_original_content;
+	this->_size = this->_content.size();
+}
+
 void	Text::clear(void)
 {
 	this->reset();
 	this->_mode = Text::Mode::NORMAL;
 	this->_content.clear();
+	this->_original_content.clear();
 	this->_tmp_separators.clear();
 	this->_tmp_separator_status = false;
 	this->_size = 0;
-}
-
-Vector::string		Text::split(bool all)
-{
-	Vector::string	rvalue;
-	std::size_t		tmp_cursor_value(this->_cursor);
-
-	if (all)
-		this->_cursor = 0;
-	while (!this->eof())
-		rvalue.push_back(this->getWord());
-	this->_cursor = tmp_cursor_value;
-	return (rvalue);
 }
 
 void	Text::showSeparators(bool printable) const
@@ -145,4 +140,3 @@ void	Text::showWords(void)
 	this->_cursor = tmp_cursor;
 	this->_mode = tmp_mode;
 }
-

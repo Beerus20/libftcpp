@@ -2,6 +2,7 @@
 # define __TEXT_HPP__
 
 # include <iostream>
+#include <string>
 # include "../Utils/Utils.hpp"
 
 # define SEPARATORS	" \t\n\v\f\r"
@@ -24,15 +25,19 @@ class Text
 		Text			&operator>>(std::string &str);
 		Text			&operator<<(const std::string &str);
 
-		const std::string	getWord(void);
-		const std::string	getRWord(void);
+		const std::string	&getCurrentWord(void) const;
+		const std::string	&getWord(void);
+		const std::string	&getRWord(void);
 		const std::size_t	&getCursor(void) const;
 		const std::string	&getContent(void) const;
+		const std::string	&getOriginalContent(void) const;
 		const std::string	&getSeparators(void) const;
 		const std::string	&getFoundSeparators(void) const;
 		const std::string	&getTmpSeparators(void) const;
 		const bool			&getTmpSeparatorStatus(void) const;
 		const Mode			&getMode(void) const;
+		const std::size_t	&getSize(void) const;
+		std::size_t			getOriginalSize(void) const;
 
 		void				setMode(const Mode &mode);
 		void				setContent(const std::string &content);
@@ -47,15 +52,19 @@ class Text
 
 		bool				eof(void);
 		void				reset(void);
+		void				resetContent(void);
 		void				clear(void);
 		void				showSeparators(bool printable = true) const;
 		void				showWords(void);
 
 		Vector::string		split(bool all = false);
+		const std::string	&replace(const std::string &word, const std::string &replace_word, std::size_t nb = 0);
 
 	private:
+		std::string	_word;
 		std::size_t	_cursor;
 		std::string	_content;
+		std::string	_original_content;
 		std::string	_separators;
 		std::string	_found_separators;
 		std::string	_tmp_separators;

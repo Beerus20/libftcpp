@@ -12,6 +12,11 @@ const std::string	&Text::getContent(void) const
 	return (this->_content);
 }
 
+const std::string	&Text::getOriginalContent(void) const
+{
+	return (this->_original_content);
+}
+
 const std::string	&Text::getSeparators(void) const
 {
 	return (this->_separators);
@@ -37,6 +42,21 @@ const Text::Mode	&Text::getMode(void) const
 	return (this->_mode);
 }
 
+const std::string	&Text::getCurrentWord(void) const
+{
+	return (this->_word);
+}
+
+const std::size_t	&Text::getSize(void) const
+{
+	return (this->_size);
+}
+
+std::size_t	Text::getOriginalSize(void) const
+{
+	return (this->_original_content.size());
+}
+
 // SETTERS =====================================================================
 void	Text::setMode(const Text::Mode &mode)
 {
@@ -48,6 +68,7 @@ void	Text::setContent(const std::string &content)
 {
 	this->reset();
 	this->_content = Utils::trim(content);
+	this->_original_content = this->_content;
 	this->_size = this->_content.size();
 }
 

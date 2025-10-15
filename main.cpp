@@ -8,13 +8,27 @@ int	main(int, char **argv)
 
 	(void)text;
 	//text.addSeparators("LtSdFE");
-	text.addTmpSeparators(":");
-	text.showWords();
-	text.setTmpSeparatorStatus(true);
-	text.showWords();
+	
+	
+	//text.addTmpSeparators(":");
+	//text.showWords();
+	//text.setTmpSeparatorStatus(true);
+	//text.showWords();
 
-	text.setTmpSeparatorStatus(false);
-	text.showWords();
+	//text.setTmpSeparatorStatus(false);
+	//text.showWords();
+	
+	std::cout << "Content : " << text.getContent() << std::endl;
+	text.replace("t", "o");
+	std::cout << "replaced Content : " << text.getContent() << std::endl;
+	std::cout << "original Content : " << text.getOriginalContent() << std::endl;
+	text.resetContent();
+	text.replace("t", "o", 2);
+	std::cout << std::endl;
+	std::cout << "replaced Content : " << text.getContent() << std::endl;
+	std::cout << "original Content : " << text.getOriginalContent() << std::endl;
+	
+	
 	//text >> tmp;
 	//std::cout << "TEST : " << text.hasFoundSeparator("L") << std::endl;
 
