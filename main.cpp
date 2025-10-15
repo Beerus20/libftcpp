@@ -8,10 +8,13 @@ int	main(int, char **argv)
 
 	(void)text;
 	//text.addSeparators("LtSdFE");
-	//text.showSeparators();
-	//text.rmSeparators("tdE");
-	//text.showSeparators();
+	text.addTmpSeparators(":");
+	text.showWords();
+	text.setTmpSeparatorStatus(true);
+	text.showWords();
 
+	text.setTmpSeparatorStatus(false);
+	text.showWords();
 	//text >> tmp;
 	//std::cout << "TEST : " << text.hasFoundSeparator("L") << std::endl;
 
@@ -28,6 +31,6 @@ int	main(int, char **argv)
 	//}
 	//text << "something to test here";
 	//std::cout << text << std::endl;
-	std::cout << Utils::split(argv[1], "L") << std::endl;
+	//std::cout << Utils::split(argv[1], "L") << std::endl;
 	return (0);
 }

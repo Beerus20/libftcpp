@@ -30,20 +30,26 @@ class Text
 		const std::string	&getContent(void) const;
 		const std::string	&getSeparators(void) const;
 		const std::string	&getFoundSeparators(void) const;
+		const std::string	&getTmpSeparators(void) const;
+		const bool			&getTmpSeparatorStatus(void) const;
 		const Mode			&getMode(void) const;
-		void				addSeparators(const std::string &sep);
-		void				rmSeparators(const std::string &sep);
 
 		void				setMode(const Mode &mode);
 		void				setContent(const std::string &content);
+		void				setTmpSeparatorStatus(const bool &status);
 		void				updateCursor(std::size_t cursor_position);
-
+		
+		void				addSeparators(const std::string &sep);
+		void				rmSeparators(const std::string &sep);
 		bool				hasFoundSeparator(const std::string &to_search) const;
+		void				addTmpSeparators(const std::string &sep);
+		void				rmTmpSeparators(const std::string &sep);
 
 		bool				eof(void);
 		void				reset(void);
 		void				clear(void);
 		void				showSeparators(bool printable = true) const;
+		void				showWords(void);
 
 		Vector::string		split(bool all = false);
 
@@ -52,9 +58,12 @@ class Text
 		std::string	_content;
 		std::string	_separators;
 		std::string	_found_separators;
+		std::string	_tmp_separators;
 		Mode		_mode;
 		std::size_t	_size;
+		bool		_tmp_separator_status;
 
+		bool		findSeparator(void) const;
 	
 };
 
