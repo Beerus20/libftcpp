@@ -19,6 +19,8 @@ const std::string	&Text::replace(const std::string &word, const std::string &rep
 	std::size_t	len(word.length());
 	std::size_t	nb_found(0);
 
+	if (word == replace_word)
+		return (this->_content);
 	while ((pos = this->_content.find(word, pos)) != std::string::npos)
 	{
 		this->_content.replace(pos, len, replace_word);
@@ -35,6 +37,8 @@ const std::string	&Text::replaceChars(const std::string &chars, const std::strin
 	std::size_t	pos(0);
 	std::size_t	nb_found(0);
 
+	if (chars.size() != replace_chars.size() || chars == replace_chars)
+		return (this->_content);
 	for (std::size_t i(0); i < chars.size(); i++)
 	{
 		while ((pos = this->_content.find(chars[i], pos)) != std::string::npos)
