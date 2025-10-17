@@ -47,6 +47,7 @@ class Text
 		void				addSeparators(const std::string &sep);
 		void				rmSeparators(const std::string &sep);
 		bool				hasFoundSeparator(const std::string &to_search) const;
+		bool				hasFoundSeparatorOther(const std::string &to_search) const;
 		void				addTmpSeparators(const std::string &sep);
 		void				rmTmpSeparators(const std::string &sep);
 

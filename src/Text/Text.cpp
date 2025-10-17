@@ -87,6 +87,16 @@ bool	Text::hasFoundSeparator(const std::string &to_search) const
 	return (false);
 }
 
+bool	Text::hasFoundSeparatorOther(const std::string &to_search) const
+{
+	for (std::size_t i(0); i < this->_found_separators.size(); i++)
+	{
+		if (to_search.find_first_of(this->_found_separators[i]) == std::string::npos)
+			return (true);
+	}
+	return (false);
+}
+
 bool	Text::eof(void)
 {
 	return (this->_cursor >= this->_size);
