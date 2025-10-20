@@ -18,6 +18,8 @@ class Utils
 
 		static const std::vector<std::string >	keyword;
 
+		static bool	isspace(const char &c);
+
 		static void				readLines(const std::string &path, void (*func)(const std::string &) = NULL, bool empty_line = false);
 		static void				readLines(const std::string &, void *, void (*func)(const std::string &, void *), bool empty_line = false);
 		static std::string		getFileName(const std::string &path);

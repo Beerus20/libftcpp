@@ -9,6 +9,11 @@ Utils	&Utils::operator=(const Utils &)
 	return (*this);
 }
 
+bool	Utils::isspace(const char &c)
+{
+	return ((c >= 7 && c <= 13) || c == 32);
+}
+
 void	Utils::readLines(const std::string &path, void (*func)(const std::string &), bool empty_line)
 {
 	std::ifstream	file(path);
@@ -55,3 +60,4 @@ std::string Utils::getFileName(const std::string &path)
 	}
 	return (rvalue);
 }
+
