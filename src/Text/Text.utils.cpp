@@ -52,3 +52,23 @@ const std::string	&Text::replaceChars(const std::string &chars, const std::strin
 	this->_size = this->_content.size();
 	return (this->_content);
 }
+
+bool	Text::hasChar(const char c, const std::size_t &pos) const
+{
+	return (this->_content.find(c, pos) != std::string::npos);
+}
+
+std::size_t	Text::findChar(const char c, const std::size_t &pos) const
+{
+	return (this->_content.find(c, pos));	
+}
+
+bool	Text::hasWord(const std::string &word, const std::size_t &pos) const
+{
+	return (this->_content.find(word, pos) != std::string::npos);
+}
+
+std::size_t	Text::findWord(const std::string &word, const std::size_t &pos) const
+{
+	return (this->_content.find(word, pos));
+}

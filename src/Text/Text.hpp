@@ -46,10 +46,12 @@ class Text
 		
 		void				addSeparators(const std::string &sep);
 		void				rmSeparators(const std::string &sep);
-		bool				hasFoundSeparator(const std::string &to_search) const;
-		bool				hasFoundSeparatorOther(const std::string &to_search) const;
 		void				addTmpSeparators(const std::string &sep);
 		void				rmTmpSeparators(const std::string &sep);
+		
+		bool				hasFoundSeparator(const std::string &to_search) const;
+		bool				hasFoundSeparatorOther(const std::string &to_search) const;
+		bool				testFoundSeparators(int (*func)(int));
 
 		bool				eof(void);
 		void				reset(void);
@@ -61,6 +63,10 @@ class Text
 		Vector::string		split(bool all = false);
 		const std::string	&replace(const std::string &word, const std::string &replace_word, std::size_t nb = 0);
 		const std::string	&replaceChars(const std::string &chars, const std::string &replace_chars, std::size_t nb = 0);
+		bool				hasChar(const char c, const std::size_t &pos = 0) const;
+		std::size_t			findChar(const char c, const std::size_t &pos = 0) const;
+		bool				hasWord(const std::string &word, const std::size_t &pos = 0) const;
+		std::size_t			findWord(const std::string &word, const std::size_t &pos = 0) const;
 
 	private:
 		std::string	_word;

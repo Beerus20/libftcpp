@@ -5,6 +5,7 @@ DIRECTORIES					= \
 								Utils
 
 DIR_TEXT					= \
+								Text.extra.cpp					\
 								Text.utils.cpp					\
 								Text.operators.cpp				\
 								Text.accessors.cpp				\

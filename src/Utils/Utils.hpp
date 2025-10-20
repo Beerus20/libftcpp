@@ -33,7 +33,9 @@ class Utils
 
 		template <typename T>
 		static typename std::vector<T>::const_iterator find(const std::vector<T> &vec, const T &to_find);
-
+		
+		template <typename T>
+		bool find(const std::vector<T> &vec, const T &to_find);
 };
 
 template <typename R, typename A>
@@ -52,6 +54,12 @@ template <typename T>
 typename std::vector<T>::const_iterator Utils::find(const std::vector<T> &vec, const T &to_find)
 {
 	return (std::find(vec.begin(), vec.end(), to_find));
+}
+
+template <typename T>
+bool Utils::find(const std::vector<T> &vec, const T &to_find)
+{
+	return (std::find(vec.begin(), vec.end(), to_find) != vec.end());
 }
 
 template <typename T>
