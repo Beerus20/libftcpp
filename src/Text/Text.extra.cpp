@@ -24,7 +24,11 @@ bool	Text::testFoundSeparators(int (*func)(int))
 {
 	for (std::size_t i(0); i < this->_found_separators.size(); i++)
 	{
-		if ((*func)(this->_found_separators[i]))
+		if (this->_found_separators[i] == '{')
+		{
+			std::cout << "TEST { : " << (*func)(this->_found_separators[i]) << std::endl;
+		}
+		if ((*func)(this->_found_separators[i]) != 0)
 			return (true);
 	}
 	return (false);

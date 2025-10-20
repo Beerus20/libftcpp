@@ -118,6 +118,18 @@ void	Text::showSeparators(bool printable) const
 	std::cout << "]" << std::endl;
 }
 
+void	Text::showFoundSeparators(bool printable) const
+{
+	std::cout << "Found separators : [";
+	for (std::size_t i(0); i < this->_found_separators.size(); i++)
+	{
+		if (!std::isprint(this->_found_separators[i]) && printable)
+			continue ;
+		std::cout << this->_found_separators[i];
+	}
+	std::cout << "]" << std::endl;
+}
+
 void	Text::showWords(void)
 {
 	std::size_t	tmp_cursor(this->_cursor);

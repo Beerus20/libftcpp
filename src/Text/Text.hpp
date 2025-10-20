@@ -58,6 +58,7 @@ class Text
 		void				resetContent(void);
 		void				clear(void);
 		void				showSeparators(bool printable = true) const;
+		void				showFoundSeparators(bool printable = true) const;
 		void				showWords(void);
 
 		Vector::string		split(bool all = false);
