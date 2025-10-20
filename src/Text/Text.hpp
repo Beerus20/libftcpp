@@ -51,7 +51,7 @@ class Text
 		
 		bool				hasFoundSeparator(const std::string &to_search) const;
 		bool				hasFoundSeparatorOther(const std::string &to_search) const;
-		bool				testFoundSeparators(int (*func)(int));
+		bool				testFoundSeparators(bool (*func)(const char &));
 
 		bool				eof(void);
 		void				reset(void);

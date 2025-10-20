@@ -20,16 +20,12 @@ bool	Text::hasFoundSeparatorOther(const std::string &to_search) const
 	return (false);
 }
 
-bool	Text::testFoundSeparators(int (*func)(int))
+bool	Text::testFoundSeparators(bool (*func)(const char &))
 {
 	for (std::size_t i(0); i < this->_found_separators.size(); i++)
 	{
-		if (this->_found_separators[i] == '{')
-		{
-			std::cout << "TEST { : " << (*func)(this->_found_separators[i]) << std::endl;
-		}
-		if ((*func)(this->_found_separators[i]) != 0)
-			return (true);
+		if (!(*func)(this->_found_separators[i]))
+			return (false);
 	}
-	return (false);
+	return (true);
 }
